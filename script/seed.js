@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Budget, Category} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -12,7 +12,98 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  console.log(`seeded ${users.length} users`)
+  const categories = await Promise.all([
+    Category.create({name: 'Salary', type: 'Income'}),
+    Category.create({name: 'Shopping', type: 'Expense'}),
+    Category.create({name: 'Transport', type: 'Expense'}),
+    Category.create({name: 'Car Loan', type: 'Debt'})
+  ])
+
+  const budgets = await Promise.all([
+    Budget.create({
+      userId: 1,
+      categoryId: 1,
+      month: 4,
+      year: 2020,
+      allocation: 6000
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 2,
+      month: 4,
+      year: 2020,
+      allocation: 200
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 3,
+      month: 4,
+      year: 2020,
+      allocation: 50
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 4,
+      month: 4,
+      year: 2020,
+      allocation: 150
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 1,
+      month: 5,
+      year: 2020,
+      allocation: 6000
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 2,
+      month: 5,
+      year: 2020,
+      allocation: 150
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 3,
+      month: 5,
+      year: 2020,
+      allocation: 50
+    }),
+    Budget.create({
+      userId: 1,
+      categoryId: 4,
+      month: 5,
+      year: 2020,
+      allocation: 150
+    }),
+    Budget.create({
+      userId: 2,
+      categoryId: 1,
+      month: 4,
+      year: 2020,
+      allocation: 3500
+    }),
+    Budget.create({
+      userId: 2,
+      categoryId: 2,
+      month: 4,
+      year: 2020,
+      allocation: 250
+    }),
+    Budget.create({
+      userId: 2,
+      categoryId: 4,
+      month: 4,
+      year: 2020,
+      allocation: 200
+    })
+  ])
+
+  console.log(
+    `seeded ${users.length} users, ${categories.length} categories, and ${
+      budgets.length
+    } budgets`
+  )
   console.log(`seeded successfully`)
 }
 
