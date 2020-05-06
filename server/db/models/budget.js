@@ -28,6 +28,13 @@ const Budget = db.define('budget', {
       const value = this.getDataValue('allocation')
       return parseFloat(value)
     }
+  },
+  type: {
+    type: Sequelize.ENUM('Annual', 'Monthly', 'Hourly'),
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   }
 })
 

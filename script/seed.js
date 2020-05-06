@@ -25,77 +25,88 @@ async function seed() {
       categoryId: 1,
       month: 4,
       year: 2020,
-      allocation: 6000
+      allocation: 72000,
+      type: 'Annual'
     }),
     Budget.create({
       userId: 1,
       categoryId: 2,
       month: 4,
       year: 2020,
-      allocation: 200
+      allocation: 200,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 1,
       categoryId: 3,
       month: 4,
       year: 2020,
-      allocation: 50
+      allocation: 50,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 1,
       categoryId: 4,
       month: 4,
       year: 2020,
-      allocation: 150
+      allocation: 150,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 1,
       categoryId: 1,
       month: 5,
       year: 2020,
-      allocation: 6000
+      allocation: 75000,
+      type: 'Annual'
     }),
     Budget.create({
       userId: 1,
       categoryId: 2,
       month: 5,
       year: 2020,
-      allocation: 150
+      allocation: 150,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 1,
       categoryId: 3,
       month: 5,
       year: 2020,
-      allocation: 50
+      allocation: 50,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 1,
       categoryId: 4,
       month: 5,
       year: 2020,
-      allocation: 150
+      allocation: 150,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 2,
       categoryId: 1,
       month: 4,
       year: 2020,
-      allocation: 3500
+      allocation: 3500,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 2,
       categoryId: 2,
       month: 4,
       year: 2020,
-      allocation: 250
+      allocation: 250,
+      type: 'Monthly'
     }),
     Budget.create({
       userId: 2,
       categoryId: 4,
       month: 4,
       year: 2020,
-      allocation: 200
+      allocation: 200,
+      type: 'Monthly'
     })
   ])
 
