@@ -2,26 +2,6 @@ const User = require('./user')
 const Budget = require('./budget')
 const Category = require('./category')
 
-// User.hasMany(Budget)
-// Budget.belongsTo(User)
-
-// Budget.belongsToMany(Category, {through: 'budgetCategory'})
-// Category.belongsToMany(Budget, {through: 'budgetCategory'})
-
-// User.hasMany(Category)
-// Category.belongsTo(User)
-
-// User.belongsToMany(Category, {through: 'userBudgetCategory'})
-// User.belongsToMany(Budget, {through: 'userBudgetCategory'})
-
-// Category.belongsToMany(User, {through: 'userBudgetCategory'})
-// Category.belongsToMany(Budget, {through: 'userBudgetCategory'})
-
-// Budget.belongsToMany(User, {through: 'userBudgetCategory'})
-// Budget.belongsToMany(Category, {through: 'userBudgetCategory'})
-
-// User.belongsToMany(Category, {through: Budget})
-// Category.belongsToMany(User, {through: Budget})
 Budget.belongsTo(User)
 Budget.belongsTo(Category)
 User.hasMany(Budget)
