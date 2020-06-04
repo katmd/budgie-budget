@@ -229,5 +229,25 @@ describe('Budget routes', () => {
       let categories = await Category.findAll()
       expect(categories.length).to.equal(3)
     })
+
+    it('PUT /api/budget/update should update a budget item', async () => {
+      const reqBody = {
+        item: {
+          id: 3,
+          allocation: 1200,
+          allocationType: 'Annual'
+        }
+      }
+      let putResponse = await request(app)
+        .put('/api/budget/update')
+        .set('content-type', 'application/json')
+        .send(reqBody)
+        .expect(200)
+      expect(putResponse.body).to.be.an('object')
+
+      let updatedBudgetItem = await Budget.findByPk(reqBody.item.id)
+      expect(updatedBudgetItem.allocation).to.equal(1200)
+      expect(updatedBudgetItem.type).to.equal('Annual')
+    })
   })
 })
