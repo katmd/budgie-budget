@@ -249,5 +249,19 @@ describe('Budget routes', () => {
       expect(updatedBudgetItem.allocation).to.equal(1200)
       expect(updatedBudgetItem.type).to.equal('Annual')
     })
+
+    it('DELETE /api/budget/delete/:budgetId should delete the first budget item', async () => {
+      let deleteResponse = await request(app)
+        .delete('/api/budget/delete/1')
+        .set('content-type', 'application/json')
+        .expect(204)
+      expect(deleteResponse.body).to.be.an('object')
+
+      let deletedBudgetItem = await Budget.findByPk(1)
+      expect(deletedBudgetItem).to.equal(null)
+
+      let budgets = await Budget.findAll()
+      expect(budgets.length).to.equal(2)
+    })
   })
 })
