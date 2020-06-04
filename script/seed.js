@@ -7,107 +7,107 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+  const users = await User.bulkCreate([
+    {email: 'cody@email.com', password: '123'},
+    {email: 'murphy@email.com', password: '123'}
   ])
 
-  const categories = await Promise.all([
-    Category.create({name: 'Salary', type: 'Income'}),
-    Category.create({name: 'Shopping', type: 'Expense'}),
-    Category.create({name: 'Transport', type: 'Expense'}),
-    Category.create({name: 'Car Loan', type: 'Debt'})
+  const categories = await Category.bulkCreate([
+    {name: 'Salary', type: 'Income'},
+    {name: 'Shopping', type: 'Expense'},
+    {name: 'Transport', type: 'Expense'},
+    {name: 'Car Loan', type: 'Debt'}
   ])
 
-  const budgets = await Promise.all([
-    Budget.create({
+  const budgets = await Budget.bulkCreate([
+    {
       userId: 1,
       categoryId: 1,
       month: 4,
       year: 2020,
       allocation: 72000,
       type: 'Annual'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 2,
       month: 4,
       year: 2020,
       allocation: 200,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 3,
       month: 4,
       year: 2020,
       allocation: 50,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 4,
       month: 4,
       year: 2020,
       allocation: 150,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 1,
       month: 5,
       year: 2020,
       allocation: 75000,
       type: 'Annual'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 2,
       month: 5,
       year: 2020,
       allocation: 150,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 3,
       month: 5,
       year: 2020,
       allocation: 50,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 1,
       categoryId: 4,
       month: 5,
       year: 2020,
       allocation: 150,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 2,
       categoryId: 1,
       month: 4,
       year: 2020,
       allocation: 3500,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 2,
       categoryId: 2,
       month: 4,
       year: 2020,
       allocation: 250,
       type: 'Monthly'
-    }),
-    Budget.create({
+    },
+    {
       userId: 2,
       categoryId: 4,
       month: 4,
       year: 2020,
       allocation: 200,
       type: 'Monthly'
-    })
+    }
   ])
 
   console.log(
